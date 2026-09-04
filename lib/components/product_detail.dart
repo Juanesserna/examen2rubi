@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // Modelo de Datos del Producto
-class Product {
+class Products {
   final String name;
   final String category;
   final double price;
@@ -10,7 +10,7 @@ class Product {
   final List<String> portions;
   final List<ExtraItem> extras;
 
-  Product({
+  Products({
     required this.name,
     required this.category,
     required this.price,
@@ -29,17 +29,17 @@ class ExtraItem {
   ExtraItem({required this.name, required this.price, this.isSelected = false});
 }
 
-class ProductDetailScreen extends StatefulWidget {
-  const ProductDetailScreen({super.key});
+class ProductDetailScreens extends StatefulWidget {
+  const ProductDetailScreens({super.key});
 
   @override
-  State<ProductDetailScreen> createState() => _ProductDetailScreenState();
+  State<ProductDetailScreens> createState() => _ProductDetailScreenState();
 }
 
-class _ProductDetailScreenState extends State<ProductDetailScreen> {
+class _ProductDetailScreenState extends State<ProductDetailScreens> {
   
-  final List<Product> _products = [
-    Product(
+  final List<Products> _products = [
+    Products(
       name: 'Strawberry Cream Cake',
       category: 'PREMIUM BAKERY',
       price: 24.99,
@@ -61,7 +61,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final product = _products[_currentProductIndex];
+    final products = _products[_currentProductIndex];
 
     return Scaffold(
       backgroundColor: const Color(0xFFF9F9F9),
@@ -106,14 +106,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     AnimatedSwitcher(
                       duration: const Duration(milliseconds: 400),
                       child: Container(
-                        key: ValueKey<String>(product.imageAsset),
+                        key: ValueKey<String>(products.imageAsset),
                         height: 320,
                         width: double.infinity,
                         margin: const EdgeInsets.symmetric(horizontal: 16.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
                           image: DecorationImage(
-                            image: AssetImage(product.imageAsset),
+                            image: AssetImage(products.imageAsset),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -132,7 +132,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  product.name,
+                                  products.name,
                                   style: const TextStyle(
                                     fontSize: 24,
                                     fontWeight: FontWeight.bold,
@@ -141,7 +141,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 ),
                                 const SizedBox(height: 4),
                                 Text(
-                                  product.category,
+                                  products.category,
                                   style: const TextStyle(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
@@ -151,7 +151,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                 ),
                                 const SizedBox(height: 12),
                                 Text(
-                                  '\$${product.price.toStringAsFixed(2)}',
+                                  '\$${products.price.toStringAsFixed(2)}',
                                   style: const TextStyle(
                                     fontSize: 22,
                                     fontWeight: FontWeight.bold,
@@ -200,7 +200,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Text(
-                        product.description,
+                        products.description,
                         style: const TextStyle(
                           fontSize: 14,
                           color: Color(0xFF7C7C7C),
@@ -227,7 +227,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: Row(
-                        children: List.generate(product.portions.length, (index) {
+                        children: List.generate(products.portions.length, (index) {
                           bool isSelected = _selectedPortionIndex == index;
                           return Expanded(
                             child: Padding(
@@ -260,7 +260,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                                         vertical: 14.0),
                                     child: Center(
                                       child: Text(
-                                        product.portions[index],
+                                        products.portions[index],
                                         style: TextStyle(
                                           color: isSelected
                                               ? const Color(0xFFED2C6D)
@@ -297,9 +297,9 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: product.extras.length,
+                      itemCount: products.extras.length,
                       itemBuilder: (context, index) {
-                        final extra = product.extras[index];
+                        final extra = products.extras[index];
                         return Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20.0, vertical: 6.0),
@@ -448,7 +448,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(
                           SnackBar(
                             content: Text(
-                              'Added $_quantity ${product.name}(s) to cart!',
+                              'Added $_quantity ${products.name}(s) to cart!',
                             ),
                             duration: const Duration(seconds: 2),
                           ),
