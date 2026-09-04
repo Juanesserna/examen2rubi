@@ -1,18 +1,29 @@
 import 'package:flutter/material.dart';
-import 'components/product_detail.dart'; // <-- Ruta correcta según tu estructura
+import 'theme/app_colors.dart';
+import 'screens/login_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const DulceAromaApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class DulceAromaApp extends StatelessWidget {
+  const DulceAromaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      title: 'Dulce Aroma',
       debugShowCheckedModeBanner: false,
-      home: ProductDetailScreen(), // <-- Llama a tu pantalla de detalles
+      theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: 'Roboto',
+        scaffoldBackgroundColor: AppColors.background,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primaryPink,
+          primary: AppColors.primaryPink,
+        ),
+      ),
+      home: const LoginScreen(),
     );
   }
 }
