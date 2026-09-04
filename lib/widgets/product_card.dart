@@ -3,6 +3,7 @@ import '../models/product.dart';
 import '../cart/cart_model.dart';
 import '../screens/product_detail_screen.dart';
 import '../theme/app_color.dart';
+import '../components/product_detail.dart';
 
 class ProductCard extends StatefulWidget {
   final Product product;
@@ -32,7 +33,7 @@ class _ProductCardState extends State<ProductCard> {
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (_) => ProductDetailScreen(product: product),
+            builder: (_) => ProductDetailScreens(),
           ),
         );
       },

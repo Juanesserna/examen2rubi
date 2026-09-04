@@ -10,6 +10,7 @@ import '../theme/app_color.dart';
 import 'search_screen.dart';
 import 'cart_screen.dart';
 
+
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
