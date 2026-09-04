@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/cart_item_model.dart';
 import '../widgets/cart_item_card.dart';
-import 'product_detail_screen.dart';
+import 'product_detail_screens.dart';
 
 const _kAccentColor = Color(0xFFE91E63);
 const _kBackground = Color(0xFFF6F5F8);
