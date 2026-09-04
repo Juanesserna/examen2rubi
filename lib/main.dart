@@ -1,20 +1,29 @@
 import 'package:flutter/material.dart';
+import 'theme/app_colors.dart';
+import 'screens/login_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(const DulceAromaApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class DulceAromaApp extends StatelessWidget {
+  const DulceAromaApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
+    return MaterialApp(
+      title: 'Dulce Aroma',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        fontFamily: 'Roboto',
+        scaffoldBackgroundColor: AppColors.background,
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: AppColors.primaryPink,
+          primary: AppColors.primaryPink,
         ),
       ),
+      home: const LoginScreen(),
     );
   }
 }
