@@ -8,7 +8,7 @@ import '../widgets/bottom_nav_bar.dart';
 import '../cart/cart_model.dart';
 import '../theme/app_color.dart';
 import 'search_screen.dart';
-import 'cart_screen.dart';
+import 'cart_screens.dart';
 
 
 class HomeScreen extends StatefulWidget {
